@@ -17,11 +17,16 @@ using namespace std;
 int main(){
 	ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+
 	int n, A, B;
 	cin >> n >> A >> B;
-    vector<int> sh;
+    vector<int> sh; // sizes hole
+
+    // input
     int i = 0; int a;
-    long long ss = 0;
+    long long ss = 0; // sum size
+    // using long long since the this is the sum of the all vector elements which can be big
+
     while( i < n){
         cin >> a;
         ss += a;
@@ -29,19 +34,17 @@ int main(){
         i++;
         
     }
-    a = 0;
+    a = 0; // reuse a as counting variable
 
     int fh = sh[0];
     
     sort(sh.begin()+1, sh.end());
 
     for(int i = n-1; i > 0; i--){
-       // int cmp = (fh * A) - (ss*B);
        long long cmp = (fh * A) - (ss*B) ;
        if ( cmp >= 0){
-          break;
+          break; // the condition is satisfied
        }
-       //cout << cmp << endl;
        ss -= sh[i];
        a++;
     }
